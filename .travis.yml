@@ -1,0 +1,36 @@
+# Config file for automatic testing at travis-ci.org
+
+language: python
+dist: xenial
+python:
+  - 3.7
+
+before_install:
+- echo -e "machine github.com\n  login $CI_USER_TOKEN" > ~/.netrc
+
+# Command to run tests, e.g. python setup.py test
+install:
+- pip install pipenv
+- pipenv install --system --deploy --ignore-pipfile
+
+stages:
+  - test
+  - name: answers
+    if: branch = master
+
+jobs:
+  include:
+    - stage: test
+      script: pytest -v
+      install:
+        - pipenv install --dev --ignore-pipfile --deploy
+      before_script: # code coverage tool
+         - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+         - chmod +x ./cc-test-reporter
+         - ./cc-test-reporter before-build
+      script: pytest --cov-report xml --cov-report term
+      after_script:
+        - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+    - stage: answers
+      script:
+      - python3 -m final_project
