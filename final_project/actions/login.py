@@ -28,12 +28,17 @@ class Login:
         self.driver.close()  # Close only the tab not the browser. For closing browser .quit()
 
     def login(self):
+        # Make it easier to call driver
         driver = self.driver
         # Launch Instagram Page
         driver.get("https://www.instagram.com")
 
+        # Using sleep to ensure the page has the time to load
+        # This will be used multiple times throughout the code
         sleep(2)
 
+        # Find the page on the page to the username field
+        # For more info about xpath: https://en.wikipedia.org/wiki/XPath
         username_field = driver.find_element_by_xpath("//input[@name=\"username\"]")
         # Clear field in case auto-filling is on
         username_field.clear()
@@ -43,9 +48,11 @@ class Login:
         password_field = driver.find_element_by_xpath("//input[@name=\"password\"]")
         password_field.clear()
         password_field.send_keys(self.password)
+
+        # Pressing Return/Enter is the equivalent to clicking the Submit button
         password_field.send_keys(Keys.RETURN)
 
-        # ONLY NEEDED IF NO AUTO LOGGING? NEW FEATURE FROM INSTA??
+        # If instead clicking is preferred - one can use the two lines below
         # submit_button = driver.find_element_by_xpath('//button[@type="submit"]')
         # submit_button.click()
 
