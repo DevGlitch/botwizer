@@ -106,3 +106,4 @@ venv.bak/
 .mypy_cache/
 
 .idea
+/final_project/dashboard/~$dashboard.xlsx
