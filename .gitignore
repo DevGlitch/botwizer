@@ -106,4 +106,9 @@ venv.bak/
 .mypy_cache/
 
 .idea
-/final_project/dashboard/~$dashboard.xlsx
+*~$dashboard.xlsx
+*junk.py
+.DS_Store
+drivers/.DS_Store
+drivers/chrome/.DS_Store
+final_project/.DS_Store
