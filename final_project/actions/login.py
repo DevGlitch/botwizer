@@ -48,3 +48,7 @@ def login(username: str, password: str):
     )  # Needed as recall
     not_now_button.click()
     sleep(2)
+
+
+def close_browser():
+    driver.quit()  # Close browser and driver. For closing just the tab .close()
