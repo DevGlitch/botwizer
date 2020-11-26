@@ -1,8 +1,9 @@
 from final_project.actions.login import driver
 from time import sleep
 from urllib.parse import urlparse
+from urllib.request import urlretrieve
 import requests
-# from csci_utils.io.io import atomicwrite
+from final_project.csci_utils.io.io import atomic_write
 import os
 
 
@@ -14,10 +15,10 @@ def open_first_pic():
     sleep(2)
 
 
-def get_src_img():
+'''def get_src_img():
     # Get the src link of the image opened
     img = driver.find_element_by_xpath("//img")
-    return img.get_attribute("src")  # ISSUE it includes in url ?.... after img extension - need to clean url
+    return img.get_attribute("src")  # ISSUE it includes in url ?.... after img extension - need to clean url'''
 
 
 def get_src_video():
@@ -27,24 +28,54 @@ def get_src_video():
 
 
 def get_img():
-    # Download image locally
+    # Find all elements containing img
     page_images = driver.find_elements_by_xpath("//img")
 
+    # Check all images and getting their attribute sizes
     for img in page_images:
         sizes = img.get_attribute("sizes")
 
+        # To find the post image
         if sizes > "293px":
             # 293px is the size of the post preview
-            # Any picture bigger than 293px are a post picture
+            # Any picture bigger than 293px is a post picture
             # So this will gives you only one url
-            src = img.get_attribute("src")
-            url = urlparse(src).path
-            print(url)
-            filename = os.path.basename(url)
-            print(filename)
+            url = img.get_attribute("src")
 
-            with requests.get(url, stream=True) as req:
-                req.raise_for_status()
+            # Parsing the URL in order to get the filename path
+            get_filename = urlparse(url).path
+
+            # Image filename
+            filename = os.path.basename(get_filename)
+
+            # Path were images will be saved
+            path = os.path.join("data/images/", filename)
+            print("Path = ", path)
+
+            # Making sure file doesn't exist already
+            if not os.path.exists(filename):
+
+                # Using package requests to check for any http issue like 4XX or 5XX errors
+                with requests.get(url, stream=True) as req:
+                    # Checking if request is successful (None = no error)
+                    if req.raise_for_status() is not None:
+                        print("Error: URL of picture is incorrect.")
+                        pass
+
+                    # Writing file atomically locally
+                    with atomic_write(filename, as_file=False) as f:
+                        print("going to save")
+
+                        urlretrieve(url, filename=f)
+
+                        print("saved the image")
+
+                # Returning the image location in order to use with other functions
+                return filename  # or file path ???
+
+            else:
+                print("Picture already exists.")
+                pass
 
         else:
             pass
