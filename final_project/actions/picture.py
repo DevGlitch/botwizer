@@ -48,11 +48,13 @@ def get_img():
             # Image filename
             filename = os.path.basename(get_filename)
 
-            # Path were images will be saved
-            path = os.path.join("data/images/", filename)
-            print("Path = ", path)
+            # Create folders to store the image
+            os.makedirs("data/images", exist_ok=True)
 
-            # Making sure file doesn't exist already
+            # Path were the image will be saved
+            path = os.path.join("data/images/", filename)
+
+            # Making sure the file doesn't exist already
             if not os.path.exists(filename):
 
                 # Using package requests to check for any http issue like 4XX or 5XX errors
@@ -63,24 +65,20 @@ def get_img():
                         pass
 
                     # Writing file atomically locally
-                    with atomic_write(filename, as_file=False) as f:
-                        print("going to save")
-
+                    with atomic_write(path, as_file=False) as f:
                         urlretrieve(url, filename=f)
+                        print("Image saved.")
 
-                        print("saved the image")
-
-                # Returning the image location in order to use with other functions
-                return filename  # or file path ???
+                # Returning the image path in order to use with other functions
+                return f
 
             else:
+                # Pass if the picture is already present in the folder
                 print("Picture already exists.")
                 pass
 
         else:
             pass
-
-    # filename = os.path.basename(url)  # not working due to ?.... in url after img extension
 
 
 def get_vid():
