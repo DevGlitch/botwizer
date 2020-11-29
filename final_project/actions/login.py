@@ -9,12 +9,14 @@ def login(username: str, password: str):
 
     # Launch Instagram Page
     driver.get("https://www.instagram.com")
+    print("Loading Instagram page...")
     # Using sleep to ensure the page has the time to load
     # This will be used multiple times throughout the code
     sleep(2)
 
     # Find on the page to the username field
     # For more info about xpath: https://en.wikipedia.org/wiki/XPath
+    print("Entering credentials...")
     username_field = driver.find_element_by_xpath('//input[@name="username"]')
     # Clear field in case auto-filling is on
     username_field.clear()
@@ -28,6 +30,7 @@ def login(username: str, password: str):
 
     # Pressing Return/Enter here is the equivalent to clicking the Submit button
     password_field.send_keys(Keys.RETURN)
+    print("Connecting...")
 
     # If instead clicking is preferred - one can use the two lines below
     # submit_button = driver.find_element_by_xpath('//button[@type="submit"]')
@@ -51,4 +54,5 @@ def login(username: str, password: str):
 
 
 def close_browser():
+    print("Closing Chrome.")
     driver.quit()  # Close browser and driver. For closing just the tab .close()
