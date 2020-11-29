@@ -54,16 +54,18 @@ def get_img():
 
                     # Writing file atomically locally
                     with atomic_write(path, as_file=False) as f:
+                        print("Saving image...")
                         urlretrieve(url, filename=f)
                         print("Image saved...")
 
                 # Returning the image path in order to use with other functions
-                return f
 
             else:
                 # Pass if the picture is already present in the folder
                 print("Picture already exists...")
-                pass
+
+            # Returning path of the picture
+            return path
 
         else:
             pass
@@ -125,14 +127,3 @@ def close_pic():
     close_button = driver.find_element_by_class_name("wpO6b")  # might need to use xpath here to prevent errors
     close_button.click()
     sleep(2)
-
-
-# save picture link with pandas?
-
-# temp save then use YOLO?
-
-# if object detected then like...
-
-# what about post that was posted before XXX date and want to ignore?
-# find post created after XXX date probably better idea
-# date would be based on the last date we run the program?
