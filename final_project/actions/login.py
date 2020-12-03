@@ -44,6 +44,7 @@ def login(username: str, password: str):
     )
     not_now_button.click()
     sleep(2)
+    print("Successfully connected :)")
 
     # Click not now on "Notification" popup
     not_now_button = driver.find_element_by_xpath(
@@ -54,5 +55,6 @@ def login(username: str, password: str):
 
 
 def close_browser():
-    print("Closing Chrome.")
+    print("Closing Chrome...")
     driver.quit()  # Close browser and driver. For closing just the tab .close()
+    print("Chrome session successfully closed.")

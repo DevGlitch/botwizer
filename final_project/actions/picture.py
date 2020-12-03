@@ -11,6 +11,7 @@ def open_first_pic():
     # Open the first post/picture available on the page
     # This is following human behaviors instead of opening by getting the url
     pic = driver.find_element_by_class_name("kIKUG")
+    print("Opening first picture/post...")
     pic.click()
     sleep(2)
 
@@ -56,13 +57,13 @@ def get_img():
                     with atomic_write(path, as_file=False) as f:
                         print("Saving image...")
                         urlretrieve(url, filename=f)
-                        print("Image saved...")
+                        print("Image saved :)")
 
                 # Returning the image path in order to use with other functions
 
             else:
                 # Pass if the picture is already present in the folder
-                print("Picture already exists...")
+                print("Picture already exists :(")
 
             # Returning path of the picture
             return path
@@ -98,26 +99,27 @@ def get_vid():
         with requests.get(url, stream=True) as req:
             # Checking if request is successful (None = no error)
             if req.raise_for_status() is not None:
-                print("Error: URL of video is incorrect...")
+                print("Error: URL of video is incorrect :(")
                 pass
 
             # Writing file atomically locally
             with atomic_write(path, as_file=False) as f:
                 urlretrieve(url, filename=f)
-                print("Video saved...")
+                print("Video saved :)")
 
         # Returning the video path in order to use with other functions
         return f
 
     else:
         # Pass if the video is already present in the folder
-        print("Video already exists...")
+        print("Video already exists :(")
         pass
 
 
 def next_pic():
     # Click on the right arrow to go to next post/picture
     next_button = driver.find_element_by_class_name("coreSpriteRightPaginationArrow")
+    print("Opening next picture/post...")
     next_button.click()
     sleep(2)
 
@@ -125,5 +127,6 @@ def next_pic():
 def close_pic():
     # Click on the cross to close the post/picture
     close_button = driver.find_element_by_class_name("wpO6b")  # might need to use xpath here to prevent errors
+    print("Closing picture/post...")
     close_button.click()
     sleep(2)

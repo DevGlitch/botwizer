@@ -9,4 +9,5 @@ def set_driver():
     driver = webdriver.Chrome(
         executable_path="../drivers/chrome/chromedriver", options=chrome_options
     )
+    print("Launching Chrome...")
     return driver
