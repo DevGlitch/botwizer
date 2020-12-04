@@ -55,10 +55,10 @@ class Pages:
         sleep(2)
 
     @staticmethod
-    def tag_page(keyword: str):
+    def hashtag_page(hashtag: str):
         # Page of a specific tag
-        driver.get("https://www.instagram.com/explore/tags/" + keyword + "/")
-        print("Loading", keyword, "'s tag page...")
+        driver.get("https://www.instagram.com/explore/tags/" + hashtag + "/")
+        print("Loading", hashtag, "'s tag page...")
         sleep(2)
 
     @staticmethod
