@@ -5,15 +5,26 @@ from urllib.request import urlretrieve
 import requests
 from final_project.csci_utils.io.io import atomic_write
 import os
+from selenium.common.exceptions import NoSuchElementException
 
 
-def open_first_pic():
+def open_first_post():
     # Open the first post/picture available on the page
     # This is following human behaviors instead of opening by getting the url
     pic = driver.find_element_by_class_name("kIKUG")
-    print("Opening first picture/post...")
+    print("Opening first post...")
     pic.click()
     sleep(2)
+
+
+def is_post_a_video():
+    # Checking if the post is a video or not
+    try:
+        # Trying to find element that is a post with a video
+        driver.find_element_by_class_name("tWeCl")
+        return True
+    except NoSuchElementException:
+        return False
 
 
 def get_img():
@@ -116,17 +127,17 @@ def get_vid():
         pass
 
 
-def next_pic():
+def next_post():
     # Click on the right arrow to go to next post/picture
     next_button = driver.find_element_by_class_name("coreSpriteRightPaginationArrow")
-    print("Opening next picture/post...")
+    print("Opening next post...")
     next_button.click()
     sleep(2)
 
 
-def close_pic():
+def close_post():
     # Click on the cross to close the post/picture
     close_button = driver.find_element_by_class_name("wpO6b")  # might need to use xpath here to prevent errors
-    print("Closing picture/post...")
+    print("Closing post...")
     close_button.click()
     sleep(2)
