@@ -13,5 +13,5 @@ def decision(probability):
         return True
 
     else:
-        print("I will pass for this time...")
+        print("We will pass for this time...")
         return False

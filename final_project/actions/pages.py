@@ -58,7 +58,7 @@ class Pages:
     def hashtag_page(hashtag: str):
         # Page of a specific tag
         driver.get("https://www.instagram.com/explore/tags/" + hashtag + "/")
-        print("Loading", hashtag, "'s tag page...")
+        print("Loading", hashtag, " hashtag page...")
         sleep(2)
 
     @staticmethod
