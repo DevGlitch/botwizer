@@ -1,41 +1,43 @@
 import os
-import shutil
 import pandas as pd
 from final_project.csci_utils.io.io import atomic_write
 from final_project.actions.login import login, close_browser
 from final_project.actions.data_folder import delete_folder, delete_file
-from final_project.actions.search import search_general
 from final_project.actions.pages import Pages as p
-from final_project.actions.picture import open_first_post, next_post, close_post, get_img, get_vid
+from final_project.actions.picture import open_first_post, next_post, close_post, get_img, get_vid, is_post_a_video
 from final_project.actions.follow import follow, unfollow
 from final_project.actions.like import like
 from final_project.actions.comment import post_comment
-from final_project.actions.login import driver
 from final_project.yolo.img_objects import object_detection
+from time import sleep
+from random import randint
 
 
 def main():
+
+    # __init__.py in actions will launch chrome with chromedriver
 
     # Path of the user dashboard
     dashboard_path = "final_project/user/dashboard.xlsx"
 
     # Filename of dashboard parquet file
-    dash_pqt = "final_project/data/dashboard/dashboard.parquet"
+    dash_pqt = "data/dashboard/dashboard.parquet"
 
     # Deleting old parquet file
     # This will be improved in future versions
     if os.path.exists(dash_pqt):
         delete_file(dash_pqt)
+        print("Deleting old parquet...")
 
     # Copying locally the excel file to a parquet file
-    # This file will be used to retrieve some of its data
+    # This file will be used to retrieve the data the user provided
     with atomic_write(dash_pqt, mode="w", as_file=False) as f:
 
         # Read the dashboard excel file into a pandas DataFrame
         df = pd.read_excel(dashboard_path)
         # Get only the columns object, tags, and accounts
         df = df[["object", "tags", "accounts"]]
-        # Drop rows that have all NaNs in it
+        # Drop any row that has only NaNs in it
         df = df.dropna(axis=0, how="all")
         # Drop row 0 that contains the name of the columns (see on excel file row 14)
         df = df.iloc[1:]
@@ -47,6 +49,7 @@ def main():
 
     # Store each target type into a list (removing NaN if any)
     tgt_obj = df["object"].dropna().tolist()
+    tgt_obj = str(tgt_obj[0])
     tgt_tag = df["tags"].dropna().tolist()
     tgt_acct = df["accounts"].dropna().tolist()
 
@@ -59,71 +62,92 @@ def main():
           "\n\n##########################################"
           )
 
-    # username = os.environ.get("username")
-    # password = os.environ.get("password")
-    #
-    # # if .env are presents then ask user their secure salt
-    # # if incorrect return error
-    # # if correct decrypt variables for use in login
-    #
-    # login(username, password)
-    #
-    # # driver.get("https://www.instagram.com/p/CIEiasqBp9B/")
-    # # p.account_page("cavalier.juzz")  # not really human like as it goes to a url and not using clicks
-    #
-    # # Object you want to target for liking, commenting, etc.
-    # # Need to use at least one of the 80 COCO object labels
-    # target_object = "dog"
-    #
-    # # Setting up counter
-    # likes = 0
-    # comments = 0
-    # # img_countdown = 9
-    #
-    # # START FIRST FOR LOOP or WHILE? CHECKING LIST OF TAGS LEN OR SOMETHING
-    # p.tag_page("cavalier")
-    #
-    # open_first_post()
-    #
-    # # START SECOND FOR LOOP
-    # # check the type of media...
-    # # if img then get_img() if vid then get_vid()
-    # f = get_img()
-    # g = object_detection(f)
-    # if target_object in g:
-    #     h = like()
-    #     likes += h
-    # else:
-    #     print("No dog detected...")
-    # next_post()
-    # f = get_img()
-    # g = object_detection(f)
-    # if target_object in g:
-    #     h = like()
-    #     likes += h
-    # else:
-    #     print("No dog detected...")
-    # # END SECOND FOR LOOP
-    # # END FIRST FOR LOOP
-    #
-    # close_browser()
-    #
+    username = os.environ.get("username")
+    password = os.environ.get("password")
+
+    # Launching Instagram and login-in
+    login(username, password)
+
+    # Setting up counter
+    likes = 0
+    comments = 0
+
+    for i in tgt_tag:
+
+        post_countdown = 2
+
+        # Go the page of the specific tag
+        p.tag_page(i)
+
+        # Open the first post in the page
+        open_first_post()
+
+        # From Instagram: "Recent posts from all hashtags are temporarily hidden to help prevent
+        # the spread of possible false information and harmful content related to the election."
+
+        # Due to this Instagram "block" for the moment we will be using all 9 posts that are
+        # the only ones available to see. As soon as the block is removed then we can randomize
+        # the total number of post to view as well as randomize how many time we click next_post()
+
+        post_countdown = 2
+
+        # Running until it reaches 0
+        while post_countdown != 0:
+
+            # Check the type of media
+            post_video = is_post_a_video()
+
+            if post_video is True:
+                pass
+                # The video detection for the moment isn't fully working
+                # I am trying to find a way to make the process faster
+                # vid = get_vid()
+                # vid_analyzed = vid_objects...
+
+            else:
+                img = get_img()
+                img_analyzed = object_detection(img)
+
+                if tgt_obj in img_analyzed:
+
+                    # Randomly sleeps 1 to 5 seconds
+                    sleep(randint(1, 5))
+
+                    lk = like()
+                    likes += lk
+
+                    #############################
+                    # ADD RANDOM COMMENTING HERE
+                    #############################
+
+                else:
+                    print("No ", tgt_obj, "detected in the picture.")
+                    pass
+
+            # Counting down
+            post_countdown -= 1
+
+            # Going to next post
+            next_post()
+
+    #########################################
+    # ADD RANDOM FOLLOWERS OF TARGET ACCOUNTS
+    # PLUS CHECK RANDOM NUMBER OF THEIR POST
+    # IF TARGET OBJECT PRESENT THEN LIKE AND
+    # SOMETIMES COMMENT
+    #########################################
+    # for i in tgt_acct:
+    #     p.account_page(i)
+    #     ...
+
+    close_browser()
+
     # delete_folder("images")
-    #
-    # # Printing summary of the run
-    # print("\n################ SUMMARY ################\n")
-    # print("Total of pictures liked = ", likes)
-    # print("Total of comment posted = ", comments)
-    # print("\n##########################################")
-    #
-    # # Check Chrome installed
-    # # Get Chrome Version
-    # # Install chromedriver based on Chrome version
-    #
-    # # add count to show how many pictures liked, commented, follow, etc.
-    # # count = 0
-    # # count = count + 1
-    # # print(count)
-    # # if count < > = X stop action go to next
-    #
-    # # Chrome option: add_argument("--headless")
+
+    # Printing summary of the run
+    print("\n################ SUMMARY ################\n")
+    print("Total of pictures liked = ", likes)
+    print("Total of comment posted = ", comments)
+    print("\n##########################################")
+
+    # Chrome option: add_argument("--headless")

@@ -13,6 +13,9 @@ numpy = "*"
 pandas = "*"
 selenium = "*"
 opencv-python = "*"
+xlrd = "*"
+pyarrow = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"

@@ -12,11 +12,15 @@ before_install:
 install:
 - pip install pipenv
 - pipenv install --system --deploy --ignore-pipfile
+- wget -N https://chromedriver.storage.googleapis.com/88.0.4324.27/chromedriver_linux64.zip -P ~/ # chromedriver
 
 stages:
   - test
   - name: answers
     if: branch = master
+
+addons:
+  chrome: stable # Chrome browser
 
 jobs:
   include:

@@ -20,8 +20,8 @@ def object_detection(img_path):
     """
 
     # Files from Darknet
-    config = "../final_project/yolo/cfg/yolov3.cfg"
-    weights = "../final_project/yolo/weights/yolov3.weights"
+    config = "final_project/yolo/cfg/yolov3.cfg"
+    weights = "final_project/yolo/weights/yolov3.weights"
     # weights = "weights/tiny.weights"  # Faster but a lot less accurate (not recommended)
 
     # Reads network model stored in Darknet model files
@@ -31,7 +31,7 @@ def object_detection(img_path):
     # Using Common Objects in Context (COCO) Labels
     # (https://cocodataset.org/)
     coco_label = (
-        open("../final_project/yolo/coco/coco.names").read().strip().split("\n")
+        open("final_project/yolo/coco/coco.names").read().strip().split("\n")
     )
 
     # Reads image from provided path

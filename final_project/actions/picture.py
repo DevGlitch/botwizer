@@ -58,7 +58,9 @@ def get_img():
             if not os.path.exists(path):
 
                 # Using package requests to check for any http issue like 4XX or 5XX errors
-                with requests.get(url, stream=True) as req:
+                headers = {}
+
+                with requests.get(url, stream=True, headers=headers) as req:
                     # Checking if request is successful (None = no error)
                     if req.raise_for_status() is not None:
                         print("Error: URL of picture is incorrect...")
