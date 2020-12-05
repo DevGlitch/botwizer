@@ -12,7 +12,7 @@ import time
 import numpy as np
 
 
-def object_detection(img_path):
+def img_object_detection(img_path):
     """Running YOLO on an image to detect objects
     :param img_path: path of image to analyse
     :return: object(s) detected
@@ -116,3 +116,4 @@ def object_detection(img_path):
     # If no object has been detected
     else:
         print("No object detected in the picture.")
+        return None

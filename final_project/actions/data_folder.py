@@ -11,7 +11,7 @@ def delete_folder(folder_name):
         shutil.rmtree(folder_name)
         print("Folder", folder_name, "successfully deleted.")
 
-    except OSError as e:
+    except OSError as e:  # pragma: no cover
         print("Error: %s : %s" % (folder_name, e.strerror))
 
 
@@ -21,5 +21,5 @@ def delete_file(filename):
         os.remove(filename)
         # print("File", filename, "successfully deleted.")
 
-    except OSError as e:
+    except OSError as e:  # pragma: no cover
         print("Error: %s : %s" % (filename, e.strerror))

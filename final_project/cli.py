@@ -148,7 +148,7 @@ def main():
 
             else:
                 img = get_img()
-                img_analyzed = object_detection(img)
+                img_analyzed = img_object_detection(img)
 
                 if tgt_obj in img_analyzed:
 

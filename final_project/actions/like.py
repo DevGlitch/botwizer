@@ -33,6 +33,3 @@ def like():
 
         else:
             return 0
-
-# Put Try and Except around all of this and to remove the else statement?
-# Or put continue instead of pass??
