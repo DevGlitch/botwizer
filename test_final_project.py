@@ -23,14 +23,14 @@ class ActionsWithLogin(TestCase):
     def setUp(self):
         """ Setting up Chrome """
         opts = Options()
-        opts.headless = True
-        # opts.add_argument("--headless")
-        # opts.add_argument("no-sandbox")
+        # opts.headless = True
+        opts.add_argument("--headless")
+        opts.add_argument("no-sandbox")
 
         # For running test locally add executable_path="drivers/chrome/86.0.4240.22/mac64/chromedriver" options=opts
         # Make sure the chromedriver version matches your local Chrome version
         # DevGlitch local version: 86.0.4240.22
-        self.driver = webdriver.Chrome(opts)
+        self.driver = webdriver.Chrome(executable_path="drivers/travis/chromedriver", options=opts)
 
     def test_basic(self):
         """ Basic test to ensure selenium is working correctly """
@@ -64,7 +64,6 @@ class ActionsWithLogin(TestCase):
 
 
 class Decision(TestCase):
-
     def test_decision(self):
         """ Testing to ensure function return the correct bool """
         self.assertEqual(decision(1), True)
@@ -72,7 +71,6 @@ class Decision(TestCase):
 
 
 class DataFolder(TestCase):
-
     @staticmethod
     def test_delete_dir():
         """ Testing to ensure it correctly delete directories """
@@ -91,7 +89,6 @@ class DataFolder(TestCase):
 
 
 class YOLOTesting(TestCase):
-
     def test_one_object(self):
         """ Ensuring that YOLO detects the correct object"""
         img = "test_files/test_one_obj.jpg"
@@ -108,7 +105,7 @@ class YOLOTesting(TestCase):
         """ Ensuring that YOLO detects the correct number of object """
         img = "test_files/test_multi_obj.jpg"
         detection = img_object_detection(img)
-        self.assertEqual(detection, ['dog', 'car', 'car', 'motorbike'])
+        self.assertEqual(detection, ["dog", "car", "car", "motorbike"])
 
     # def test_vid(self):
     #
