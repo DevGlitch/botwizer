@@ -1,10 +1,10 @@
 import unittest
 from unittest import TestCase
 from tempfile import mkdtemp, NamedTemporaryFile
-import os
+# import os
 
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.chrome.options import Options
 
 from final_project.actions.comment import *
 from final_project.actions.data_folder import *
@@ -16,7 +16,7 @@ from final_project.actions.pages import Pages as p
 from final_project.actions.picture import *
 from final_project.actions.search import *
 from final_project.yolo.img_objects import *
-from final_project.yolo.vid_objects import *
+# from final_project.yolo.vid_objects import *
 
 
 class ActionsWithLogin(TestCase):
@@ -26,7 +26,7 @@ class ActionsWithLogin(TestCase):
         # opts.add_argument("--headless")
         # opts.add_argument("no-sandbox")
 
-        # For running test locally add executable_path="drivers/chrome/chromedriver"
+        # For running test locally add executable_path="drivers/chrome/chromedriver" options=opts
         # Make sure the chromedriver version matches your local Chrome version
         # DevGlitch local version: 86.0.4240.22
         self.driver = webdriver.Chrome()
