@@ -27,7 +27,7 @@ class ActionsWithLogin(TestCase):
         opts.add_argument("--headless")
         opts.add_argument("no-sandbox")
 
-        # For running test locally add executable_path="drivers/chrome/86.0.4240.22/mac64/chromedriver" options=opts
+        # For running test locally add executable_path="drivers/chrome/chromedriver" options=opts
         # Make sure the chromedriver version matches your local Chrome version
         # DevGlitch local version: 86.0.4240.22
         self.driver = webdriver.Chrome(executable_path="drivers/travis/chromedriver", options=opts)
