@@ -13,9 +13,13 @@ from final_project.actions.decision import *
 from final_project.yolo.img_objects import *
 from time import sleep
 from random import randint
+import time
 
 
 def main():
+
+    # Start timer
+    time_start = time.perf_counter()
 
     # __init__.py in actions will launch chrome with chromedriver
     # Chrome option: add_argument("--headless")
@@ -86,6 +90,8 @@ def main():
             f"WARNING: A minimum of {min_comments} comments is required in order for the bot to run."
         )
 
+    # Requires a minimum of target hashtag or account in order to run
+    # 1 is the recommended minimum
     min_lk_cmt = 1
     if len(tgt_hashtag) < 1 and len(tgt_acct) < 1:
         close_browser()
@@ -207,3 +213,7 @@ def main():
     # # print("Total of people unfollowed = ", unfollowed)
     # # print("Total of new followers since last run = ", new_followers)
     # print("\n##########################################")
+
+    # Stop timer
+    time_stop = time.perf_counter() - time_start
+    print(f"The bot ran for: {time_stop:.2f}s")

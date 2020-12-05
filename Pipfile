@@ -9,6 +9,7 @@ pytest-cov = "*"
 
 [packages]
 csci-utils = {editable = true,git = "https://github.com/csci-e-29/2020fa-csci-utils-DevGlitch"}
+importlib-metadata = "1.7.0"
 numpy = "*"
 pandas = "*"
 selenium = "*"
