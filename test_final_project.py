@@ -29,7 +29,7 @@ class ActionsWithLogin(TestCase):
         # For running test locally add executable_path="drivers/chrome/chromedriver"
         # Make sure the chromedriver version matches your local Chrome version
         # DevGlitch local version: 86.0.4240.22
-        self.driver = webdriver.Chrome(executable_path="drivers/chrome/chromedriver", options=opts)
+        self.driver = webdriver.Chrome(options=opts)
 
     def test_basic(self):
         """ Basic test to ensure selenium is working correctly """
