@@ -1,6 +1,7 @@
 from selenium.webdriver.common.keys import Keys
 from time import sleep
-from final_project.actions.__init__ import set_driver
+# from final_project.actions.__init__ import set_driver
+from final_project.actions.driver import set_driver
 
 driver = set_driver()
 

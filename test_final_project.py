@@ -25,38 +25,37 @@ class ActionsWithLogin(TestCase):
         opts = Options()
         opts.headless = True
         opts.add_argument("--headless")
-        opts.add_argument("no-sandbox")
-        opts.add_argument('--disable-dev-shm-usage')
-        # For running test locally add executable_path="drivers/chrome/chromedriver" options=opts
-        # Make sure the chromedriver version matches your local Chrome version
-        # DevGlitch local version: 86.0.4240.22
-        self.driver = webdriver.Chrome(executable_path="drivers/travis/chromedriver", options=opts)
+        opts.add_argument("--no-sandbox")
+        opts.add_argument('--disable-dev-shm-usage')  # Valid only on Linux OS
+        opts.add_argument("--remote-debugging-port=9222")
+        # Make sure your chromedriver version matches with your local Chrome version
+        self.driver = webdriver.Chrome(options=opts)
 
     def test_basic(self):
         """ Basic test to ensure selenium is working correctly """
         self.driver.get("http://google.com")
         self.assertIn("Google", self.driver.title)
 
-    def test_actions(self):
-        """ Testing multiple actions that require being logged in """
-        username = os.environ.get("test_username")
-        password = os.environ.get("test_password")
-        login(username, password)
-        p.account_page("devglitchtest")
-        open_first_post()
-        # Checking to ensure media is not a video
-        self.assertEqual(is_post_a_video(), 0)
-        # Checking to ensure picture was not already liked
-        lk = like()
-        self.assertEqual(lk, 1)
-        # Checking to ensure picture was liked already
-        lk = like()
-        self.assertEqual(lk, 0)
-        next_post()
-        post_comment("Hey!")
-        p.account_page("jacksoncav")
-        follow()
-        unfollow()
+    # def test_actions(self):
+    #     """ Testing multiple actions that require being logged in """
+    #     username = os.environ.get("test_username")
+    #     password = os.environ.get("test_password")
+    #     login(username, password)
+    #     p.account_page("devglitchtest")
+    #     open_first_post()
+    #     # Checking to ensure media is not a video
+    #     self.assertEqual(is_post_a_video(), 0)
+    #     # Checking to ensure picture was not already liked
+    #     lk = like()
+    #     self.assertEqual(lk, 1)
+    #     # Checking to ensure picture was liked already
+    #     lk = like()
+    #     self.assertEqual(lk, 0)
+    #     next_post()
+    #     post_comment("Hey!")
+    #     p.account_page("jacksoncav")
+    #     follow()
+    #     unfollow()
 
     def tearDown(self):
         """ Tearing down Chrome """
