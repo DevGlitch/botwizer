@@ -44,14 +44,14 @@ def login(username: str, password: str):
         "//button[contains(text(), 'Not Now')]"
     )
     not_now_button.click()
-    sleep(2)
-    print("Successfully connected :)")
+    sleep(4)
 
     # Click not now on "Notification" popup
     not_now_button = driver.find_element_by_xpath(
         "//button[contains(text(), 'Not Now')]"
     )  # Needed as recall
     not_now_button.click()
+    print("Successfully connected :)")
     sleep(2)
 
 
