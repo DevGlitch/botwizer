@@ -69,7 +69,7 @@ class ActionsWithLogin(TestCase):
         )
 
         # Check to ensure posting a comment is successful
-        cmt = post_comment("Hey!")
+        cmt = post_comment("Hey! 👍👍")
         self.assertEqual(cmt, 1)
 
         # Check to ensure it can get a specific account page

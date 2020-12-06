@@ -205,15 +205,15 @@ def main():
 
     # delete_folder("images")
 
-    # # Printing the summary of the run
-    # print("\n################ SUMMARY ################\n")
-    # print("Total of pictures liked = ", likes)
-    # print("Total of comment posted = ", comments)
-    # # print("Total of people followed = ", followed)
-    # # print("Total of people unfollowed = ", unfollowed)
-    # # print("Total of new followers since last run = ", new_followers)
-    # print("\n##########################################")
+    # Printing the summary of the run
+    print("\n################ SUMMARY ################\n")
+    print("Total of pictures liked = ", likes)
+    print("Total of comment posted = ", comments)
+    # print("Total of people followed = ", followed)
+    # print("Total of people unfollowed = ", unfollowed)
+    # print("Total of new followers since last run = ", new_followers)
+    print("\n##########################################")
 
     # Stop timer
-    time_stop = time.perf_counter() - time_start
-    print(f"The bot ran for: {time_stop:.2f}s")
+    time_stop = (time.perf_counter() - time_start) / 60
+    print(f"The bot ran for: {time_stop:.2f} minutes")

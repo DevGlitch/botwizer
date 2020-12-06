@@ -1,3 +1,6 @@
+# emojis: https://en.wikipedia.org/wiki/Emoji#Unicode_blocks
+# chromedriver unicode after FFFF not supported: https://bugs.chromium.org/p/chromedriver/issues/detail?id=2269
+
 from final_project.actions.login import driver
 from selenium.webdriver.common.keys import Keys
 from time import sleep

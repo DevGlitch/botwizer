@@ -5,8 +5,16 @@ dist: xenial
 python:
   - 3.7
 
+addons:
+  firefox: "latest"
+
 before_install:
 - echo -e "machine github.com\n  login $CI_USER_TOKEN" > ~/.netrc
+# for firefox geckodriver setup
+- wget https://github.com/mozilla/geckodriver/releases/download/v0.28.0/geckodriver-v0.28.0-linux64.tar.gz
+- mkdir geckodriver
+- tar -xzf geckodriver-v0.28.0-linux64.tar.gz -C geckodriver
+- export PATH=$PATH:$PWD/geckodriver
 
 # Command to run tests, e.g. python setup.py test
 install:
@@ -18,9 +26,6 @@ stages:
   - name: answers
     if: branch = master
 
-addons:
-  chrome: stable # Chrome browser
-
 jobs:
   include:
     - stage: test
@@ -31,10 +36,6 @@ jobs:
          - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
          - chmod +x ./cc-test-reporter
          - ./cc-test-reporter before-build
-         - CHROME_MAIN_VERSION=`google-chrome-stable --version | sed -E 's/(^Google Chrome |\.[0-9]+ )//g'`
-         - CHROMEDRIVER_VERSION=`curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_MAIN_VERSION"`
-         - curl "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" -O
-         - unzip chromedriver_linux64.zip -d ~/bin
       script: pytest --cov-report xml --cov-report term
       after_script:
         - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

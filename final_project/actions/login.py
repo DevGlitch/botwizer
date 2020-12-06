@@ -1,10 +1,9 @@
 from selenium.webdriver.common.keys import Keys
 from time import sleep
-# from final_project.actions.__init__ import set_driver
-from final_project.actions.driver import set_driver
+from final_project.actions.driver import set_driver_firefox
 from selenium.common.exceptions import NoSuchElementException
 
-driver = set_driver()
+driver = set_driver_firefox()
 
 
 def login(username: str, password: str):
@@ -54,7 +53,7 @@ def login(username: str, password: str):
             "//button[contains(text(), 'Not Now')]"
         )  # Needed as recall
         not_now_button.click()
-    except NoSuchElementException:
+    except NoSuchElementException:  # pragma: no cover
         pass
 
     print("Successfully connected :)")
