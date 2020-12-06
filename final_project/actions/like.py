@@ -31,5 +31,5 @@ def like():
             sleep(2)
             return 1
 
-        else:
+        else:  # pragma: no cover
             return 0

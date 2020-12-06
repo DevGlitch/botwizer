@@ -63,7 +63,7 @@ def get_img():
 
                 with requests.get(url, stream=True, headers=headers) as req:
                     # Checking if request is successful (None = no error)
-                    if req.raise_for_status() is not None:
+                    if req.raise_for_status() is not None:  # pragma: no cover
                         print("Error: URL of picture is incorrect...")
                         pass
 
@@ -73,8 +73,6 @@ def get_img():
                         urlretrieve(url, filename=f)
                         print("Image saved :)")
 
-                # Returning the image path in order to use with other functions
-
             else:
                 # Pass if the picture is already present in the folder
                 print("Picture already exists :(")
@@ -82,7 +80,7 @@ def get_img():
             # Returning path of the picture
             return path
 
-        else:
+        else:  # pragma: no cover
             pass
 
 
@@ -112,7 +110,7 @@ def get_vid():
         # Using package requests to check for any http issue like 4XX or 5XX errors
         with requests.get(url, stream=True) as req:
             # Checking if request is successful (None = no error)
-            if req.raise_for_status() is not None:
+            if req.raise_for_status() is not None:  # pragma: no cover
                 print("Error: URL of video is incorrect :(")
                 pass
 
@@ -122,12 +120,12 @@ def get_vid():
                 print("Video saved :)")
 
         # Returning the video path in order to use with other functions
-        return f
+        return path
 
     else:
         # Pass if the video is already present in the folder
         print("Video already exists :(")
-        pass
+        return path
 
 
 def next_post():
@@ -138,7 +136,7 @@ def next_post():
     sleep(2)
 
 
-def close_post():  # Pragma: no cover
+def close_post():  # pragma: no cover
     # Click on the cross to close the post/picture
     close_button = driver.find_element_by_class_name("wpO6b")  # might need to use xpath here to prevent errors
     print("Closing post...")

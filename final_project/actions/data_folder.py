@@ -5,7 +5,7 @@ import os
 def delete_folder(folder_name):
     """ Deletes a folder in folder "data" """
 
-    folder_name = os.path.join("../final_project/data/", folder_name)
+    folder_name = os.path.join("../data/", folder_name)
 
     try:
         shutil.rmtree(folder_name)
