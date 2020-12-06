@@ -18,5 +18,6 @@ def set_driver():
 
     # Selenium webdriver to control Chrome
     driver = webdriver.Chrome(options=opts)
+    driver.implicitly_wait(15)
     print("Launching Chrome...")
     return driver
