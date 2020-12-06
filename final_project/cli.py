@@ -5,7 +5,7 @@ from final_project.csci_utils.io.io import atomic_write
 from final_project.actions.login import *
 from final_project.actions.data_folder import *
 from final_project.actions.pages import Pages as p
-from final_project.actions.picture import *
+from final_project.actions.post import *
 from final_project.actions.follow import *
 from final_project.actions.like import *
 from final_project.actions.comment import *

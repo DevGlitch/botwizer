@@ -3,7 +3,8 @@ from time import sleep
 from urllib.parse import urlparse
 from urllib.request import urlretrieve
 import requests
-from final_project.csci_utils.io.io import atomic_write
+# from final_project.csci_utils.io.io import atomic_write
+from csci_utils.io.io import atomic_write
 import os
 from selenium.common.exceptions import NoSuchElementException
 
