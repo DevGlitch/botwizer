@@ -23,7 +23,13 @@ class ActionsWithLogin(TestCase):
     def setUp(self):
         """ Setting up Chrome """
         opts = Options()
+        opts.add_argument("start-maximized")
+        opts.add_argument("disable-infobars")
+        opts.add_argument("--disable-extensions")
+        opts.add_argument("--disable-gpu")
+        opts.add_argument("--disable-dev-shm-usage")
         opts.add_argument("--no-sandbox")
+
         # opts.add_argument("--headless")
         # opts.add_argument('--disable-dev-shm-usage')  # Valid only on Linux OS
         # opts.add_argument("--remote-debugging-port=9222")
