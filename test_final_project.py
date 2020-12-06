@@ -23,11 +23,12 @@ class ActionsWithLogin(TestCase):
     def setUp(self):
         """ Setting up Chrome """
         opts = Options()
-        opts.headless = True
-        opts.add_argument("--headless")
         opts.add_argument("--no-sandbox")
-        opts.add_argument('--disable-dev-shm-usage')  # Valid only on Linux OS
-        opts.add_argument("--remote-debugging-port=9222")
+        # opts.add_argument("--headless")
+        # opts.add_argument('--disable-dev-shm-usage')  # Valid only on Linux OS
+        # opts.add_argument("--remote-debugging-port=9222")
+        # opts.add_argument("--start-maximized")  # open Browser in maximized mode
+
         # Make sure your chromedriver version matches with your local Chrome version
         self.driver = webdriver.Chrome(options=opts)
 
