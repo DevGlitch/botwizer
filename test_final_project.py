@@ -22,10 +22,10 @@ from final_project.yolo.vid_objects import *
 class ActionsWithLogin(TestCase):
     def setUp(self):
         """ Setting up Chrome """
-        opts = Options()
+        # opts = Options()
         # opts.headless = True
-        opts.add_argument("--headless")
-        opts.add_argument("no-sandbox")
+        # opts.add_argument("--headless")
+        # opts.add_argument("no-sandbox")
 
         # For running test locally add executable_path="drivers/chrome/chromedriver" options=opts
         # Make sure the chromedriver version matches your local Chrome version
