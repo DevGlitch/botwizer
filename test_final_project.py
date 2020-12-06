@@ -22,21 +22,13 @@ from final_project.yolo.img_objects import *
 class ActionsWithLogin(TestCase):
     def setUp(self):
         """ Setting up Chrome """
-        opts = Options()
-        opts.add_argument("start-maximized")
-        opts.add_argument("disable-infobars")
-        opts.add_argument("--disable-extensions")
-        opts.add_argument("--disable-gpu")
-        opts.add_argument("--disable-dev-shm-usage")
-        opts.add_argument("--no-sandbox")
-
+        # opts = Options()
         # opts.add_argument("--headless")
-        # opts.add_argument('--disable-dev-shm-usage')  # Valid only on Linux OS
-        # opts.add_argument("--remote-debugging-port=9222")
-        # opts.add_argument("--start-maximized")  # open Browser in maximized mode
+        # opts.add_argument("no-sandbox")
 
         # Make sure your chromedriver version matches with your local Chrome version
-        self.driver = webdriver.Chrome(options=opts)
+        # self.driver = webdriver.Chrome(options=opts)
+        self.driver = set_driver()
 
     def test_basic(self):
         """ Basic test to ensure selenium is working correctly """
