@@ -47,10 +47,15 @@ def login(username: str, password: str):
     sleep(4)
 
     # Click not now on "Notification" popup
-    not_now_button = driver.find_element_by_xpath(
-        "//button[contains(text(), 'Not Now')]"
-    )  # Needed as recall
-    not_now_button.click()
+    # This popup is not always present
+    try:
+        not_now_button = driver.find_element_by_xpath(
+            "//button[contains(text(), 'Not Now')]"
+        )  # Needed as recall
+        not_now_button.click()
+    except NoSuchElementException:
+        pass
+
     print("Successfully connected :)")
     sleep(2)
 
