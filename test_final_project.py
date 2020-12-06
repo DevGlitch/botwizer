@@ -22,7 +22,7 @@ class ActionsWithLogin(TestCase):
         """ Setting up Chrome and Logging-in"""
         username = os.environ.get("test_username")
         password = os.environ.get("test_password")
-
+        driver.implicitly_wait(30)
         login(username, password)
 
     def test_actions(self):
