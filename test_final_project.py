@@ -16,7 +16,7 @@ from final_project.actions.pages import Pages as p
 from final_project.actions.post import *
 from final_project.actions.search import *
 from final_project.yolo.img_objects import *
-from final_project.yolo.vid_objects import *
+# from final_project.yolo.vid_objects import *
 
 
 class ActionsWithLogin(TestCase):
