@@ -80,10 +80,6 @@ class ActionsWithLogin(TestCase):
         )
         self.assertEqual(driver.current_url, "https://www.instagram.com/devglitchtest/")
 
-        # Check to ensure it get followers and returns the correct list
-        followers = get_followers()
-        self.assertEqual(followers, ["jacksoncav"])
-
         # Check to ensure it can get a specific account page
         p.account_page("jacksoncav")
         self.assertEqual(driver.current_url, "https://www.instagram.com/jacksoncav/")
@@ -91,6 +87,10 @@ class ActionsWithLogin(TestCase):
         # Ensuring it can follow and unfollow
         follow()
         unfollow()
+
+        # Check to ensure it get followers and returns the correct list
+        followers = get_followers()
+        self.assertEqual(len(followers), 105)
 
         # Check to ensure search account works
         search_account("harvard")
