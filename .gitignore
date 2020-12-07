@@ -112,3 +112,4 @@ venv.bak/
 drivers/.DS_Store
 drivers/chrome/.DS_Store
 final_project/.DS_Store
+*yolov3.weights
