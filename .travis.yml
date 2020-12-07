@@ -16,9 +16,8 @@ before_install:
 - tar -xzf geckodriver-v0.28.0-linux64.tar.gz -C geckodriver
 - export PATH=$PATH:$PWD/geckodriver
 # for YOLO to be able to run on Travis
-- cd TRAVIS_BUILD_DIR/final_projects/yolo/weights/
-- wget https://pjreddie.com/media/files/yolov3.weights
-- cd
+- cd ~TRAVIS_BUILD_DIR/final_projects/yolo/weights/ && wget https://pjreddie.com/media/files/yolov3.weights
+# - curl -so /final_project/yolo/weights/yolov3.weights https://pjreddie.com/media/files/yolov3.weights
 
 # Command to run tests, e.g. python setup.py test
 install:

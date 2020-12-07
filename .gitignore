@@ -109,7 +109,5 @@ venv.bak/
 *~$dashboard.xlsx
 *junk.py
 .DS_Store
-drivers/.DS_Store
-drivers/chrome/.DS_Store
 final_project/.DS_Store
-*yolov3.weights
+final_project/yolo/weights/yolov3.weights
