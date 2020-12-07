@@ -9,7 +9,7 @@ class Pages:
     def account_page(account: str):
         # Opens account page - yours or someones else's account page
         driver.get("https://www.instagram.com/" + account + "/")  # POTENTIAL TO IMPROVE !!!!!!!!!!!!!!
-        print("Loading", account, "'s page...")
+        print("Loading", account, "profile page...")
         # Maybe instead try to click on first result?
         # Might not always work which could be an issue but this would look more human like
         sleep(2)
