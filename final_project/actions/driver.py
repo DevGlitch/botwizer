@@ -20,7 +20,7 @@ def set_driver_firefox():
     driver = webdriver.Firefox(options=opts)
 
     # Timeout waiting time for pages to load
-    # driver.implicitly_wait(10)  # Turn on if getting some no element found issues
+    driver.implicitly_wait(5)
 
     print("Launching Firefox...")
     return driver
