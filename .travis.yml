@@ -15,6 +15,10 @@ before_install:
 - mkdir geckodriver
 - tar -xzf geckodriver-v0.28.0-linux64.tar.gz -C geckodriver
 - export PATH=$PATH:$PWD/geckodriver
+# for YOLO to be able to run on Travis
+- cd TRAVIS_BUILD_DIR/final_projects/yolo/weights/
+- wget https://pjreddie.com/media/files/yolov3.weights
+- cd
 
 # Command to run tests, e.g. python setup.py test
 install:
@@ -36,9 +40,6 @@ jobs:
          - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
          - chmod +x ./cc-test-reporter
          - ./cc-test-reporter before-build
-         - cd TRAVIS_BUILD_DIR/final_projects/yolo/weights/
-         - wget https://pjreddie.com/media/files/yolov3.weights
-         - cd
       script: pytest --cov-report xml --cov-report term
       after_script:
         - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
