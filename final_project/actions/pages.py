@@ -1,4 +1,5 @@
 from final_project.actions.login import driver
+from selenium.common.exceptions import NoSuchElementException
 from time import sleep
 import os
 
@@ -16,12 +17,15 @@ class Pages:
     @staticmethod
     def your_account_page(account: str):
         # Open your own account page using the drop down menu - more human-like
-        your_acct = driver.find_element_by_xpath(
-            "//a[contains(@href,'/{}')]".format(os.environ.get("username"))
-        )
-        your_acct.click()
-        print("Opening your account page...")
-        sleep(2)
+        try:
+            your_acct = driver.find_element_by_xpath(
+                "//a[contains(@href,'/{}')]".format(os.environ.get("username"))
+            )
+            your_acct.click()
+            print("Opening your account page...")
+            sleep(2)
+        except NoSuchElementException:
+            Pages.account_page(account)
 
     @staticmethod
     def inbox():  # pragma: no cover

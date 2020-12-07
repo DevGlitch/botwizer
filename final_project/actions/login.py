@@ -70,6 +70,6 @@ def login(username: str, password: str):
 
 
 def close_browser():
-    print("Closing Chrome...")
+    print("Closing browser...")
     driver.quit()  # Close browser and driver. For closing just the tab .close()
-    print("Chrome session successfully closed.")
+    print("Browser session successfully closed.")
