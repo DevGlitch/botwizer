@@ -28,7 +28,7 @@ def get_followers():
     """ To get the full list of your followers """
     view_followers = driver.find_element_by_xpath("//a[contains(@href,'/followers')]")
     view_followers.click()
-    print("Opening your followers list...")
+    print("Checking your followers...")
     sleep(2)
 
     # p.scroll_down()

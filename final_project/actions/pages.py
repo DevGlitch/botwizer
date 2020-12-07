@@ -1,5 +1,6 @@
 from final_project.actions.login import driver
 from time import sleep
+import os
 
 
 class Pages:
@@ -10,6 +11,16 @@ class Pages:
         print("Loading", account, "'s page...")
         # Maybe instead try to click on first result?
         # Might not always work which could be an issue but this would look more human like
+        sleep(2)
+
+    @staticmethod
+    def your_account_page(account: str):
+        # Open your own account page using the drop down menu
+        your_acct = driver.find_element_by_xpath(
+            "//a[contains(@href,'/{}')]".format(os.environ.get("username"))
+        )
+        your_acct.click()
+        print("Opening your account page...")
         sleep(2)
 
     @staticmethod
@@ -36,7 +47,7 @@ class Pages:
     def hashtag_page(hashtag: str):  # pragma: no cover
         # Page of a specific tag
         driver.get("https://www.instagram.com/explore/tags/" + hashtag + "/")
-        print("Loading", hashtag, " hashtag page...")
+        print("Loading", hashtag, "hashtag page...")
         sleep(2)
 
     @staticmethod

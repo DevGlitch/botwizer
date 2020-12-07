@@ -115,4 +115,4 @@ def img_object_detection(img_path):
     # If no object has been detected
     else:
         print("No object detected in the picture.")
-        return None
+        pass
