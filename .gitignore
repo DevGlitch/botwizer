@@ -108,6 +108,6 @@ venv.bak/
 .idea
 *~$dashboard.xlsx
 *junk.py
-.DS_Store
+*.DS_Store
 final_project/.DS_Store
 final_project/yolo/weights/yolov3.weights
