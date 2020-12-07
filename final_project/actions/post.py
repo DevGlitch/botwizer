@@ -138,7 +138,8 @@ def next_post():
 
 def close_post():  # pragma: no cover
     # Click on the cross to close the post/picture
-    close_button = driver.find_element_by_class_name("wpO6b")  # might need to use xpath here to prevent errors
+    # close_button = driver.find_element_by_class_name("wpO6b") # Error with the class
+    close_button = driver.find_element_by_xpath("/html/body/div[5]/div[3]/button")
     print("Closing post...")
     close_button.click()
     sleep(2)

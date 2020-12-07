@@ -15,6 +15,17 @@ def login(username: str, password: str):
     # This will be used multiple times throughout the code
     sleep(2)
 
+    # On December 7th Insta added a new popup regarding cookies...
+    # So another step in login is necessary
+    # This popup is present everytime as selenium uses Firefox with private sessions
+
+    # Click accept on cookie popup
+    accept_button = driver.find_element_by_xpath(
+        "//button[contains(text(), 'Accept')]"
+    )
+    accept_button.click()
+    sleep(3)
+
     # Find on the page to the username field
     # For more info about xpath: https://en.wikipedia.org/wiki/XPath
     print("Entering credentials...")
@@ -32,11 +43,6 @@ def login(username: str, password: str):
     # Pressing Return/Enter here is the equivalent to clicking the Submit button
     password_field.send_keys(Keys.RETURN)
     print("Connecting...")
-
-    # If instead clicking is preferred - one can use the two lines below
-    # submit_button = driver.find_element_by_xpath('//button[@type="submit"]')
-    # submit_button.click()
-
     sleep(4)
 
     # Click not now on "Save Info" popup

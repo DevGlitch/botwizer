@@ -28,7 +28,7 @@ class ActionsWithLogin(TestCase):
         """ Testing multiple actions that require being logged in. This is done in one session. """
 
         # Check to ensure it goes to the right account page
-        p.account_page("devglitchtest")
+        p.your_account_page("devglitchtest")
 
         # Check to ensure it opened the first post
         open_first_post()
@@ -71,6 +71,18 @@ class ActionsWithLogin(TestCase):
         # Check to ensure posting a comment is successful
         cmt = post_comment("Hey! 👍👍")
         self.assertEqual(cmt, 1)
+
+        # Check to ensure it can close the post
+        close_post()
+        self.assertNotEqual(
+            driver.current_url,
+            "https://www.instagram.com/p/CIZ7vePHk6r7LMZToZX2Sg-vpk0Ynm4-XIUT2g0/",
+        )
+        self.assertEqual(driver.current_url, "https://www.instagram.com/devglitchtest/")
+
+        # Check to ensure it get followers and returns the correct list
+        followers = get_followers()
+        self.assertEqual(followers, ["jacksoncav"])
 
         # Check to ensure it can get a specific account page
         p.account_page("jacksoncav")

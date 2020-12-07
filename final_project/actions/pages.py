@@ -15,7 +15,7 @@ class Pages:
 
     @staticmethod
     def your_account_page(account: str):
-        # Open your own account page using the drop down menu
+        # Open your own account page using the drop down menu - more human-like
         your_acct = driver.find_element_by_xpath(
             "//a[contains(@href,'/{}')]".format(os.environ.get("username"))
         )

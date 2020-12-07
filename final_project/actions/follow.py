@@ -1,6 +1,9 @@
-from final_project.actions.login import driver
+import os
 from time import sleep
 from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException
+from final_project.actions.login import driver
+from final_project.csci_utils.io.io import atomic_write
+# from csci_utils.io.io import atomic_write
 
 
 def follow():
@@ -31,14 +34,12 @@ def get_followers():
     print("Checking your followers...")
     sleep(2)
 
-    # p.scroll_down()
-    # driver._make_driver_wait("/html/body/div[4]/div/div/div[2]")
-
     # Follower popup
-    # I noticed that the xpath sometimes fluctuates which broke the code so had to consider that
+    # I noticed that this xpath sometimes fluctuates which broke the code so had to consider that
+    # This is not a normal behavior for an xpath... But this below fix the issue
     try:
         follower_popup = driver.find_element_by_xpath("/html/body/div[4]/div/div/div[2]")
-    except NoSuchElementException:
+    except NoSuchElementException:  # pragma: no cover
         follower_popup = driver.find_element_by_xpath("/html/body/div[5]/div/div/div[2]")
 
     # Scrolling until the end of the popup
@@ -51,7 +52,7 @@ def get_followers():
                 "arguments[0].scrollTo(0, arguments[0].scrollHeight); return arguments[0].scrollHeight;",
                 follower_popup
             )
-        except StaleElementReferenceException:
+        except StaleElementReferenceException:  # pragma: no cover
             continue
 
     # Find all username elements
@@ -59,3 +60,38 @@ def get_followers():
     usernames = [username.text for username in ele_user if username.text != '']
 
     return usernames
+
+
+def save_followers(file: str, followers: list):
+    """ Saving followers list locally and counting new followers
+    :param file: str filepath of the txt file
+    :param followers: usernames list from get_followers
+    :return: return the number of new followers
+    :rtype: int
+    """
+    new_followers = 0
+
+    if len(followers) == 0:
+        print("No followers found.")
+        return 0
+
+    elif os.path.exists(file):
+        print("Updating followers.txt ...")
+        with open(file, "a+") as f:
+
+            print(f)
+
+            for username in followers:
+                if username not in f.read().strip().split():
+                    f.write("%s\n" % username)
+                    new_followers += 1
+            f.close()
+
+    else:
+        with atomic_write(file, mode="w", as_file=True) as f:
+            print("Creating followers.txt ...")
+            for username in followers:
+                f.write("%s\n" % username)
+                new_followers += 1
+
+    return new_followers

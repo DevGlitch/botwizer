@@ -8,7 +8,7 @@ pytest = "*"
 pytest-cov = "*"
 
 [packages]
-csci-utils = {editable = true,git = "https://github.com/csci-e-29/2020fa-csci-utils-DevGlitch"}
+csci-utils = {editable = true, git = "https://github.com/csci-e-29/2020fa-csci-utils-DevGlitch"}
 importlib-metadata = "<2.0.0"
 numpy = "*"
 pandas = "*"

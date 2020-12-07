@@ -1,16 +1,23 @@
-# 2020fa-final-project-DevGlitch
-CSCI E-29 Final Project
+# botwizer
 
-Master Branch:
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/DevGlitch/botwizer)
 
-[![Build Status](https://travis-ci.com/csci-e-29/2020fa-final-project-DevGlitch.svg?token=Zkp91rXxpJ5uUx6z1KPg&branch=master)](https://travis-ci.com/csci-e-29/2020fa-final-project-DevGlitch)
+![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/DevGlitch/botwizer)
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/0668bd3bd251450e389a/maintainability)](https://codeclimate.com/repos/5fc9bfb887e70001b500bf51/maintainability)
+[![Build Status](https://travis-ci.com/DevGlitch/botwizer.svg?branch=master)](https://travis-ci.com/DevGlitch/botwizer)
+[![Maintainability](https://api.codeclimate.com/v1/badges/6f2f0051db57f72a0e58/maintainability)](https://codeclimate.com/github/DevGlitch/botwizer/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/6f2f0051db57f72a0e58/test_coverage)](https://codeclimate.com/github/DevGlitch/botwizer/test_coverage)
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/0668bd3bd251450e389a/test_coverage)](https://codeclimate.com/repos/5fc9bfb887e70001b500bf51/test_coverage)
+[![GitHub license](https://img.shields.io/github/license/DevGlitch/botwizer)](https://github.com/DevGltich/botwizer/master/LICENSE)
+[![Inline docs](http://inch-ci.org/github/DevGlitch/botwizer.svg?branch=master)](http://inch-ci.org/github/DevGlitch/botwizer)
+![GitHub repo size](https://img.shields.io/github/repo-size/DevGlitch/botwizer)
+
+
+Visit: http://inch-ci.org/learn_more and paste your GitHub username (or organisation name) and repository name into the form then click Evaluate.
 
 <br>
 
-Develop Branch:
 
-[![Build Status](https://travis-ci.com/csci-e-29/2020fa-final-project-DevGlitch.svg?token=Zkp91rXxpJ5uUx6z1KPg&branch=develop)](https://travis-ci.com/csci-e-29/2020fa-final-project-DevGlitch)
+Download weights:
+https://pjreddie.com/media/files/yolov3.weights
+
