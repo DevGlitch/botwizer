@@ -110,4 +110,3 @@ venv.bak/
 *junk.py
 *.DS_Store
 final_project/.DS_Store
-final_project/yolo/weights/yolov3.weights
