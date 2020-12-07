@@ -20,11 +20,14 @@ def login(username: str, password: str):
     # This popup is present everytime as selenium uses Firefox with private sessions
 
     # Click accept on cookie popup
-    accept_button = driver.find_element_by_xpath(
-        "//button[contains(text(), 'Accept')]"
-    )
-    accept_button.click()
-    sleep(3)
+    try:
+        accept_button = driver.find_element_by_xpath(
+            "//button[contains(text(), 'Accept')]"
+        )
+        accept_button.click()
+        sleep(3)
+    except NoSuchElementException:
+        pass
 
     # Find on the page to the username field
     # For more info about xpath: https://en.wikipedia.org/wiki/XPath
