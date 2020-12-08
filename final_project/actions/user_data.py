@@ -4,7 +4,7 @@ from csci_utils.io.io import atomic_write
 from final_project.actions.data_folder import *
 
 
-def dash_data(file: str, save_to: str):  # pragma: no cover
+def dash_data(file: str, save_to: str):
     """ Get dashboard data, format to pd, saving relevant columns to a parquet file"""
 
     # Deleting old parquet file - This will be improved in future versions
@@ -30,7 +30,7 @@ def dash_data(file: str, save_to: str):  # pragma: no cover
         df.to_parquet(f)
 
 
-def save_following(following: list):  # pragma: no cover
+def save_following(following: list):
     """ Saving list of people bot followed in order to unfollow when needed """
     # FOR FUTURE VERSION
     ...

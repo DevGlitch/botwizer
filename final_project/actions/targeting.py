@@ -9,7 +9,7 @@ from final_project.actions.follow import *
 from random import randint, choice
 
 
-def target_hashtags(tgt_hashtag: list, tgt_obj: str, comment_list: list):  # pragma: no cover
+def target_hashtags(tgt_hashtag: list, tgt_obj: str, comment_list: list):
     """ Auto liking and commenting on user defined hashtags and object."""
 
     likes = 0
@@ -108,7 +108,7 @@ def target_hashtags(tgt_hashtag: list, tgt_obj: str, comment_list: list):  # pra
     return [likes, comments]
 
 
-def target_accounts(tgt_acct: list, tgt_obj: str, comments: list):  # pragma: no cover
+def target_accounts(tgt_acct: list, tgt_obj: str, comments: list):
     """ Auto liking, commenting, and following on user defined accounts and object."""
 
     likes = 0

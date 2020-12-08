@@ -5,3 +5,5 @@ omit =
     */*_tests.py
     */__main__.py
     */cli.py
+    */targeting.py
+    */user_data.py
