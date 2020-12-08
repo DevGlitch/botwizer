@@ -97,9 +97,9 @@ class ActionsWithLogin(TestCase):
         self.assertEqual(driver.current_url, "https://www.instagram.com/harvard/")
 
         # Check to ensure search hashtag works
-        search_hashtag("harvard")
+        search_hashtag("dog")
         self.assertEqual(
-            driver.current_url, "https://www.instagram.com/explore/tags/harvard/"
+            driver.current_url, "https://www.instagram.com/explore/tags/dog/"
         )
 
         # Check to ensure search general works
