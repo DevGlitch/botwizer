@@ -16,7 +16,7 @@ Final Project for CSCI E-29, Fall 2020, Harvard University
 <br />
 <p align="center">
   <a href="https://github.com/DevGlitch/botwizer">
-    <img src="images/botwizer_logo.jpg" alt="Logo" width="400" height="400">
+    <img src="images/botwizer_logo.jpg" alt="Logo" width="300" height="300">
   </a>
 </p>
 
@@ -32,7 +32,7 @@ Coming Soon
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Follow the below instructions in order to be able to use Botwizer on your machine.
+Follow the below instructions in order to be able to use botwizer on your machine.
 
 ### Prerequisites
 
