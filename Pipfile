@@ -17,6 +17,7 @@ opencv-python = "*"
 xlrd = "*"
 pyarrow = "*"
 requests = "*"
+pre-commit = "*"
 
 [requires]
 python_version = "3.7"
