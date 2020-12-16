@@ -2,57 +2,54 @@
 
 Final Project for CSCI E-29, Fall 2020, Harvard University
 
+<br>
+
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/DevGlitch/botwizer)
-
 ![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/DevGlitch/botwizer)
-
 [![Build Status](https://travis-ci.com/DevGlitch/botwizer.svg?branch=master)](https://travis-ci.com/DevGlitch/botwizer)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6f2f0051db57f72a0e58/maintainability)](https://codeclimate.com/github/DevGlitch/botwizer/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/6f2f0051db57f72a0e58/test_coverage)](https://codeclimate.com/github/DevGlitch/botwizer/test_coverage)
-
 [![GitHub license](https://img.shields.io/github/license/DevGlitch/botwizer)](https://github.com/DevGltich/botwizer/master/LICENSE)
-[![Inline docs](http://inch-ci.org/github/DevGlitch/botwizer.svg?branch=master)](http://inch-ci.org/github/DevGlitch/botwizer)
-![GitHub repo size](https://img.shields.io/github/repo-size/DevGlitch/botwizer)
-
-
-Visit: http://inch-ci.org/learn_more and paste your GitHub username (or organisation name) and repository name into the form then click Evaluate.
-
-<br>
 
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <a href="https://github.com/DevGlitch/botwizer">
-    <img src="images/botwizer_logo.jpg" alt="Logo" width="80" height="80">
+    <img src="images/botwizer_logo.jpg" alt="Logo" width="400" height="400">
   </a>
 </p>
 
 <br>
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+<!-- DEMO OF THE PROJECT -->
+## Demo of The Project
 
-Description of project HERE
+Coming Soon
+[![Watch the video](images/...)](https://youtu.be/....)
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Follow the below instructions in order to be able to use Botwizer on your machine.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * Firefox
-  ```sh
-  npm install npm@latest -g
+   ```python
+  $ brew install --cask firefox
+  
+  # or directly via their website:
+  https://www.mozilla.org/en-US/firefox/new/
   ```
 
 * Geckodriver
-  ```sh
-  brew install geckodriver
+   ```python
+  $ brew install geckodriver
+  
+  # or manually:
+  https://github.com/mozilla/geckodriver
   ```
 
 
@@ -72,22 +69,33 @@ This is an example of how to list things you need to use the software and how to
 2. Create .env file with your credentials
    ```python
    # in .env
-   username=******
-   password=******
+   username=________  # Your Insta username
+   password=________  # Your Insta password
    ```
 
-3. Add your targets and comments in dashboard.xlsx
-ADD SCREENSHOT HERE
-<p align="center">
-  <a href="https://github.com/DevGlitch/botwizer">
-    <img src="images/botwizer_logo.jpg" alt="Logo" width="80" height="80">
-  </a>
-</p>
-  
+3. Add your targets and comments in dashboard.xlsx (Don't forget to save!)
+    <p align="center">
+      <a href="https://github.com/DevGlitch/botwizer">
+        <img src="images/dashboard.png" alt="Logo" width="600">
+      </a>
+    </p>
+
+
+### Options
+
+1. Firefox headless mode
+   ```python
+   # actions.login
+   opts.headless = True  # Browser running in background
+   #or
+   opts.headless = False # Browser visible when botwizer is running
+   ```
+
+
 ### Running
 
 To run botwizer
-   ```JS
+   ```
    python3 -m final_project
    ```
 
