@@ -48,7 +48,7 @@ def close_followers_window():  # pragma: no cover
         pass
 
 
-def get_followers():
+def get_followers():  # pragma: no cover
     """ To get the full list of followers from an account """
     view_followers = driver.find_element_by_xpath("//a[contains(@href,'/followers')]")
     view_followers.click()

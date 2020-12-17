@@ -1,11 +1,12 @@
 import random
 from random import randint
-from final_project.actions.like import *
+
 from final_project.actions.comment import *
+from final_project.actions.like import *
 
 
 def decision(probability: float):
-    """ Function that gives you a decision based on a given probability
+    """Function that gives you a decision based on a given probability
     :param probability: float between 0 and 1
     :type: float
     :return: True or False
@@ -20,8 +21,8 @@ def decision(probability: float):
         return False
 
 
-def select_from_list(items: list, how_many: int):
-    """ Function that randomly select multiple items from a list
+def select_from_list(items: list, how_many: int):  # pragma: no cover
+    """Function that randomly select multiple items from a list
     :param items: list of items
     :param how_many: int representing number of items to select
     :return: randomly selected sample of items
@@ -30,8 +31,8 @@ def select_from_list(items: list, how_many: int):
     return random.sample(items, how_many)
 
 
-def how_many_acct(accounts: list):
-    """ Function that decides how many acct should be selected.
+def how_many_acct(accounts: list):  # pragma: no cover
+    """Function that decides how many acct should be selected.
     This will help ensure that not too many accounts are selected.
     Also, this will enable to ensure that the bot doesn't run for hours (not human-like.
     :param
@@ -52,7 +53,9 @@ def how_many_acct(accounts: list):
     return how_many
 
 
-def random_likes_comments(tgt_obj: str, detected_obj: list, comment_list: list):
+def random_likes_comments(
+    tgt_obj: str, detected_obj: list, comment_list: list
+):  # pragma: no cover
 
     count_likes = 0
     count_comments = 0
