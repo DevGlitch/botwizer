@@ -1,11 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
-# from selenium.webdriver.chrome.options import Options
 
 
 def set_driver_firefox():
-    """ Setting up Chrome with specific options and chromedriver
-    :return: chrome webdriver
+    """ Setting up Firefox with specific options and chromedriver
+    :return: open Firefox session
     """
 
     # Firefox Options
@@ -14,7 +13,7 @@ def set_driver_firefox():
     # Headless mode to avoid seeing and interfering with what the bot is doing
     # Also note that this helps running the script slightly faster
     # Switch to False if you want to see the browser running
-    opts.headless = True  # For Travis CI make sure it is set to True
+    opts.headless = False  # For Travis CI make sure it is set to True
 
     # Selenium webdriver to control Chrome
     driver = webdriver.Firefox(options=opts)
@@ -30,6 +29,8 @@ def set_driver_firefox():
 # that it doesn't support unicode after FFFF which means no emojis...
 # See here: https://bugs.chromium.org/p/chromedriver/issues/detail?id=2269
 # This is the reason why I switched to Firefox and do not recommend using Chrome
+
+# from selenium.webdriver.chrome.options import Options
 
 # def set_driver_chrome():
 #     """ Setting up Chrome with specific options and chromedriver

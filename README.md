@@ -25,9 +25,11 @@ Final Project for CSCI E-29, Fall 2020, Harvard University
 <!-- DEMO OF THE PROJECT -->
 ## Demo of The Project
 
-Coming Soon
-[![Watch the video](images/...)](https://youtu.be/....)
-
+<p align="center">
+  <a href="https://youtu.be/v_kwtLhuve8">
+    <img src="images/youtube.jpg" alt="Logo" width="200" height="200">
+  </a>
+</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started

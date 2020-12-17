@@ -1,19 +1,16 @@
 from final_project.actions.search import *
 from final_project.actions.post import *
 from final_project.actions.decision import *
-from final_project.actions.like import *
-from final_project.actions.comment import *
 from final_project.yolo.img_objects import *
 from final_project.actions.user_data import *
 from final_project.actions.follow import *
-from random import randint, choice
 
 
 def target_hashtags(tgt_hashtag: list, tgt_obj: str, comment_list: list):
     """ Auto liking and commenting on user defined hashtags and object."""
 
-    likes = 0
-    comments = 0
+    counting_likes = 0
+    counting_comments = 0
 
     for hashtag in tgt_hashtag:
 
@@ -44,57 +41,26 @@ def target_hashtags(tgt_hashtag: list, tgt_obj: str, comment_list: list):
             post_video = is_post_a_video()
 
             if post_video is True:
-                pass
-                # The video detection for the moment isn't fully working
-                # I am trying to find a way to make the process faster
-                # vid = get_vid()
-                # vid_analyzed = vid_objects...
+                # Only getting the first frame of the video
+                media = get_vid()
 
             else:
-                img = get_img()
-                img_analyzed = img_object_detection(img)
+                # Getting image from the post
+                media = get_img()
 
-                # if tgt_obj in img_analyzed is None:
-                #    pass
+            detected_obj = img_object_detection(media)
 
-                if img_analyzed is None:
-                    pass
+            # Randomly liking and commenting on pictures
+            actions = random_likes_comments(
+                tgt_obj=tgt_obj,
+                detected_obj=detected_obj,
+                comment_list=comment_list,
+            )
 
-                elif tgt_obj in img_analyzed:
-
-                    # Randomly sleeps 2 to 5 seconds
-                    # Slows down a bit the process to be more human-like
-                    sleep(randint(1, 5))
-
-                    # To randomly decide to like or not
-                    print("Should we like?...")
-                    if decision(0.80):
-                        lk = like()
-                        # Adding to likes counter if like() returns 1
-                        likes += lk
-
-                        # To randomly decide to comment or not
-                        # With the condition that the picture was not already liked
-                        print("Should we comment?...")
-                        if lk == 1 and decision(0.50):
-
-                            # randomly choose a comment from the provided list
-                            comment = choice(comment_list)
-
-                            # Posting comment
-                            post_comment(comment)
-
-                            # Adding to comments counter
-                            comments += 1
-
-                            # FOR FUTURE VERSION: CHECK IF THE COMMENT HAS BEEN USED JUST BEFORE
-                            # AVOID POSTING TWICE IN A ROW THE SAME COMMENT
-                            # POTENTIALLY USER COULD DEFINE HOW OFTEN THEY WANT THE COMMENT
-                            # TO BE POSTED AND THIS WOULD BE ON A SCALE FROM 1 to 5
-
-                else:
-                    print("No", tgt_obj, "detected in the picture.")
-                    pass
+            # Updating counting
+            l, c = actions
+            counting_likes += l
+            counting_comments += c
 
             # Counting down
             post_countdown -= 1
@@ -105,14 +71,14 @@ def target_hashtags(tgt_hashtag: list, tgt_obj: str, comment_list: list):
         # Closing the last opened post
         close_post()
 
-    return [likes, comments]
+    return [counting_likes, counting_comments]
 
 
-def target_accounts(tgt_acct: list, tgt_obj: str, comments: list):
+def target_accounts(tgt_acct: list, tgt_obj: str, comment_list: list):
     """ Auto liking, commenting, and following on user defined accounts and object."""
 
-    likes = 0
-    comments = 0
+    counting_likes = 0
+    counting_comments = 0
     following = []
 
     for acct in tgt_acct:
@@ -123,29 +89,69 @@ def target_accounts(tgt_acct: list, tgt_obj: str, comments: list):
         # Get followers list of targeted account
         acct_followers = get_followers()
 
+        # Randomly decides how many accounts we want to access
+        how_many = how_many_acct(acct_followers)
+
+        # Randomly selecting accounts in the list
+        print("Randomly selecting a list of accounts...")
+        selected_acct = select_from_list(items=acct_followers, how_many=how_many)
+
         # Randomly accessing account in the list based on a random maximum number
-        ...
+        for acct_name in selected_acct:
 
-        # Checking a random number of posts for each accounts
-        post_countdown = 3
+            # Access each single selected accounts
+            search_account(acct_name)
 
-        search_account(acct)
-        ...
-        #########################################
-        # ADD RANDOM FOLLOWERS OF TARGET ACCOUNTS
-        # PLUS CHECK RANDOM NUMBER OF THEIR POST
-        # IF TARGET OBJECT PRESENT THEN LIKE AND
-        # SOMETIMES COMMENT
-        #########################################
-        ...
+            # Follow this specific account
+            follow()
 
-        # Counting down
-        post_countdown -= 1
+            # Open first post of this specific account
+            try:
+                open_first_post()
 
-        # Going to next post
-        next_post()
+            # This is in case the account is private
+            # Basically not possible to see posts and open
+            except NoSuchElementException:
+                continue
+
+            # Checking a random number of posts for each accounts
+            # This range can be changed. Recommended setting is < 5
+            post_countdown = randint(2, 4)
+
+            while post_countdown != 0:
+
+                # Check the type of media
+                post_video = is_post_a_video()
+
+                if post_video is True:
+                    # Only getting the first frame of the video
+                    media = get_vid()
+
+                else:
+                    # Getting image from the post
+                    media = get_img()
+
+                detected_obj = img_object_detection(media)
+
+                # Randomly liking and commenting on pictures
+                actions = random_likes_comments(
+                    tgt_obj=tgt_obj,
+                    detected_obj=detected_obj,
+                    comment_list=comment_list,
+                )
+
+                # Updating counting
+                l, c = actions
+                counting_likes += l
+                counting_comments += c
+
+                # Counting down
+                post_countdown -= 1
+
+                # Going to next post
+                next_post()
 
     # Save list of people the bot just followed
     save_following(following)
 
-    return [likes, comments]
+    return [counting_likes, counting_comments]

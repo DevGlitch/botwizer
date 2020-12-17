@@ -20,13 +20,13 @@ def login(username: str, password: str):
     # This popup is present everytime as selenium uses Firefox with private sessions
 
     # Click accept on cookie popup
-    try:
+    try:  # pragma no cover
         accept_button = driver.find_element_by_xpath(
             "//button[contains(text(), 'Accept')]"
         )
         accept_button.click()
         sleep(3)
-    except NoSuchElementException:
+    except NoSuchElementException:  # pragma no cover
         pass
 
     # Find on the page to the username field
@@ -60,7 +60,7 @@ def login(username: str, password: str):
     try:
         not_now_button = driver.find_element_by_xpath(
             "//button[contains(text(), 'Not Now')]"
-        )  # Needed as recall
+        )
         not_now_button.click()
     except NoSuchElementException:  # pragma: no cover
         pass

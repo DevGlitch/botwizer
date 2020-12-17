@@ -74,6 +74,10 @@ def main():
     # Launching Instagram and login-in
     login(username, password)
 
+    # p.account_page("thatdood_theodore")
+    # open_first_post()
+    # like()
+
     # Going to your profile
     p.your_account_page(username)
 
@@ -88,34 +92,40 @@ def main():
     # Saving followers list locally (if already exists just updating list)
     new_followers = save_followers(file=fol_txt, followers=your_followers)
 
-    # Targeting hashtags - auto like and comment
-    tag_likes, tag_comments, followed = target_hashtags(
+    # Targeting hashtags - auto & randomly like and comment
+    tag_likes, tag_comments = target_hashtags(
         tgt_hashtag=tgt_hashtag, tgt_obj=tgt_obj, comment_list=comments
     )
 
-    # Targeting accounts - auto like, comment, follow NOT IMPLEMENTED
-    # acct_likes, acct_comments = target_accounts(tgt_acct=tgt_acct, tgt_obj=tgt_obj, comments=comments)
+    # Targeting accounts - auto like, comment, follow
+    acct_likes, acct_comments = target_accounts(
+        tgt_acct=tgt_acct, tgt_obj=tgt_obj, comment_list=comments
+    )
 
-    # Unfollowing randomly accounts NOT IMPLEMENTED
+    # FOR FUTURE VERSION
+    # Unfollowing randomly accounts
+    # This will in the future ensure that we don't follow too many accounts
+    # We could unfollow first the accounts not following us and that we started following a while back
+    # This is possible only if we save the list of accounts we follow and save the date when we started following them
     # unfollowed = unfollowing(...)
 
     # Closing the browser session
     close_browser()
-    delete_folder("images")
-    delete_folder("videos")
+    # delete_folder("images")
+    # delete_folder("videos")
 
     # Total of posts liked and commented
-    likes = tag_likes  # + acct_likes
-    comments = tag_comments  # + acct_comments
-    # followed =
-    # unfollowed =
+    likes = acct_likes + tag_likes
+    comments = acct_comments + tag_comments
+    # followed =  # FOR FUTURE VERSION
+    # unfollowed =  # FOR FUTURE VERSION
 
     # Printing the summary of the run
     print("\n################ SUMMARY ################\n")
     print("Total of pictures liked = ", likes)
     print("Total of comments posted = ", comments)
-    # print("Total of people followed = ", followed)
-    # print("Total of people unfollowed = ", unfollowed)
+    # print("Total of people followed = ", followed)  # FOR FUTURE VERSION
+    # print("Total of people unfollowed = ", unfollowed)  # FOR FUTURE VERSION
     print("Total of followers = ", total_followers)
     print("Total of new followers since last run = ", new_followers)
     print("\n##########################################")

@@ -3,7 +3,6 @@ from time import sleep
 from urllib.parse import urlparse
 from urllib.request import urlretrieve
 import requests
-# from final_project.csci_utils.io.io import atomic_write
 from csci_utils.io.io import atomic_write
 import os
 from selenium.common.exceptions import NoSuchElementException
@@ -12,7 +11,8 @@ from selenium.common.exceptions import NoSuchElementException
 def open_first_post():
     # Open the first post/picture available on the page
     # This is following human behaviors instead of opening by getting the url
-    pic = driver.find_element_by_class_name("kIKUG")
+    # pic = driver.find_element_by_class_name("kIKUG")  # If you click follow before this it doesn't work
+    pic = driver.find_element_by_class_name("eLAPa")
     print("Opening first post...")
     pic.click()
     sleep(2)
@@ -90,7 +90,10 @@ def get_vid():
     page_video = driver.find_element_by_xpath("//video")
 
     # Getting the URL of the video
-    url = page_video.get_attribute("src")
+    # url = page_video.get_attribute("src")
+    # On December 8th Instagram changed something here which affected src that we were getting
+    # Due to this and for now we will only save the first frame of the video as jpg - speed up bot
+    url = page_video.get_attribute("poster")
 
     # Parsing the URL in order to get the filename path
     get_filename = urlparse(url).path

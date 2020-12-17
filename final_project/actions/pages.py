@@ -8,21 +8,19 @@ class Pages:
     @staticmethod
     def account_page(account: str):
         # Opens account page - yours or someones else's account page
-        driver.get("https://www.instagram.com/" + account + "/")  # POTENTIAL TO IMPROVE !!!!!!!!!!!!!!
+        driver.get("https://www.instagram.com/" + account + "/")
         print("Loading", account, "profile page...")
-        # Maybe instead try to click on first result?
-        # Might not always work which could be an issue but this would look more human like
         sleep(2)
 
     @staticmethod
     def your_account_page(account: str):
         # Open your own account page using the drop down menu - more human-like
         try:
+
             your_acct = driver.find_element_by_xpath(
                 "//a[contains(@href,'/{}')]".format(os.environ.get("username"))
             )
             your_acct.click()
-            print("Opening your account page...")
             sleep(2)
         except NoSuchElementException:
             Pages.account_page(account)

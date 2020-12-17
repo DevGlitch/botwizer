@@ -32,4 +32,4 @@ def like():
             return 1
 
         else:  # pragma: no cover
-            return 0
+            pass

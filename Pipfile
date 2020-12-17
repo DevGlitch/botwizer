@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 pytest = "*"
 pytest-cov = "*"
+pre-commit = "*"
 
 [packages]
 csci-utils = {editable = true, git = "https://github.com/csci-e-29/2020fa-csci-utils-DevGlitch"}
@@ -17,7 +18,6 @@ opencv-python = "*"
 xlrd = "*"
 pyarrow = "*"
 requests = "*"
-pre-commit = "*"
 
 [requires]
 python_version = "3.7"

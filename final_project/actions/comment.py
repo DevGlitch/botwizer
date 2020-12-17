@@ -25,5 +25,5 @@ def post_comment(your_comment: str):
     # Press enter in order to submit comment
     add_comment.send_keys(Keys.RETURN)
     print("Comment posted :)")
-    sleep(2)
+    sleep(3)
     return 1
