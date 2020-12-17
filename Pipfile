@@ -1,0 +1,23 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+pytest-cov = "*"
+pre-commit = "*"
+
+[packages]
+csci-utils = {editable = true, git = "https://github.com/csci-e-29/2020fa-csci-utils-DevGlitch"}
+importlib-metadata = "<2.0.0"
+numpy = "*"
+pandas = "*"
+selenium = "*"
+opencv-python = "*"
+xlrd = "*"
+pyarrow = "*"
+requests = "*"
+
+[requires]
+python_version = "3.7"
