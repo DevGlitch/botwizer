@@ -6,7 +6,7 @@ Final Project for CSCI E-29, Fall 2020, Harvard University
 
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/DevGlitch/botwizer)
 ![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/DevGlitch/botwizer)
-[![Build Status](https://travis-ci.com/DevGlitch/botwizer.svg?branch=master)](https://travis-ci.com/DevGlitch/botwizer)
+[![Build Status](https://travis-ci.com/DevGlitch/botwizer.svg?branch=develop)](https://travis-ci.com/DevGlitch/botwizer)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6f2f0051db57f72a0e58/maintainability)](https://codeclimate.com/github/DevGlitch/botwizer/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/6f2f0051db57f72a0e58/test_coverage)](https://codeclimate.com/github/DevGlitch/botwizer/test_coverage)
 [![GitHub license](https://img.shields.io/github/license/DevGlitch/botwizer)](https://github.com/DevGltich/botwizer/master/LICENSE)
@@ -22,12 +22,18 @@ Final Project for CSCI E-29, Fall 2020, Harvard University
 
 <br>
 
+<!-- DESCRIPTION OF THE PROJECT -->
+## Description
+
+A wiser bot using object detections and best marketing practices to act like a human.
+
+
 <!-- DEMO OF THE PROJECT -->
-## Demo of The Project
+## Demo
 
 <p align="center">
   <a href="https://youtu.be/v_kwtLhuve8">
-    <img src="images/youtube.jpg" alt="Logo" width="200" height="200">
+    <img src="images/youtube.jpeg" alt="Logo" width="200" height="200">
   </a>
 </p>
 
@@ -41,7 +47,7 @@ Follow the below instructions in order to be able to use botwizer on your machin
 * Firefox
    ```python
   $ brew install --cask firefox
-  
+
   # or directly via their website:
   https://www.mozilla.org/en-US/firefox/new/
   ```
@@ -49,7 +55,7 @@ Follow the below instructions in order to be able to use botwizer on your machin
 * Geckodriver
    ```python
   $ brew install geckodriver
-  
+
   # or manually:
   https://github.com/mozilla/geckodriver
   ```
@@ -65,7 +71,7 @@ Follow the below instructions in order to be able to use botwizer on your machin
 2. Download weights file
    ```python
    # Place this file in yolo.weights
-   https://pjreddie.com/media/files/yolov3.weights 
+   https://pjreddie.com/media/files/yolov3.weights
    ```
 
 2. Create .env file with your credentials
