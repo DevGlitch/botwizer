@@ -3,7 +3,7 @@ from selenium.webdriver.firefox.options import Options
 
 
 def set_driver_firefox():
-    """ Setting up Firefox with specific options and chromedriver
+    """Setting up Firefox with specific options and chromedriver
     :return: open Firefox session
     """
 
@@ -13,7 +13,7 @@ def set_driver_firefox():
     # Headless mode to avoid seeing and interfering with what the bot is doing
     # Also note that this helps running the script slightly faster
     # Switch to False if you want to see the browser running
-    opts.headless = False  # For Travis CI make sure it is set to True
+    opts.headless = True  # For Travis CI make sure it is set to True
 
     # Selenium webdriver to control Chrome
     driver = webdriver.Firefox(options=opts)

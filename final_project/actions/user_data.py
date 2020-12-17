@@ -1,6 +1,8 @@
 import os
+
 import pandas as pd
 from csci_utils.io.io import atomic_write
+
 from final_project.actions.data_folder import *
 
 
@@ -30,7 +32,7 @@ def dash_data(file: str, save_to: str):
         df.to_parquet(f)
 
 
-def save_following(following: list):
+def save_following(following: list):  # pragma: no cover
     """ Saving list of people bot followed in order to unfollow when needed """
     # FOR FUTURE VERSION
     ...
