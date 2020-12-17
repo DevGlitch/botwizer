@@ -120,10 +120,10 @@ class ActionsWithLogin(TestCase):
         sleep(5)
         assert os.path.exists(vid)
 
-        # Check to ensure it detects the image already exist
+        # Check to ensure it get the first frame of the video
         vid = get_vid()
         self.assertEqual(
-            Path(vid).name, "128422303_391185199001526_4096507582682817078_n.mp4"
+            Path(vid).name, "128383303_145819103956437_4362863989620933869_n.jpg"
         )
 
     def tearDown(self):
