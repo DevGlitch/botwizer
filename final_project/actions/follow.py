@@ -2,9 +2,8 @@ import os
 from time import sleep
 from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException
 from final_project.actions.login import driver
-from final_project.actions.post import *
-from final_project.csci_utils.io.io import atomic_write
-# from csci_utils.io.io import atomic_write
+from final_project.actions.post import *from final_project.csci_utils.io.io import atomic_write
+from csci_utils.io.io import atomic_write
 
 
 def follow():
