@@ -22,6 +22,8 @@ def img_object_detection(img_path):
     # Files from Darknet
     config = "final_project/yolo/cfg/yolov3.cfg"
     weights = "final_project/yolo/weights/yolov3.weights"
+    # Weights are not provided in the repository due to their size
+    # You can download them from the official website: https://pjreddie.com/media/files/yolov3.weights
 
     # Reads network model stored in Darknet model files
     # OpenCV dnn module is used to load YOLO network
