@@ -6,7 +6,7 @@ Final Project for CSCI E-29, Fall 2020, Harvard University
 
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/DevGlitch/botwizer)
 ![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/DevGlitch/botwizer)
-[![Build Status](https://travis-ci.com/DevGlitch/botwizer.svg?branch=develop)](https://travis-ci.com/DevGlitch/botwizer)
+[![Travis Build Status](https://travis-ci.com/DevGlitch/botwizer.svg?branch=develop)](https://travis-ci.com/DevGlitch/botwizer)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6f2f0051db57f72a0e58/maintainability)](https://codeclimate.com/github/DevGlitch/botwizer/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/6f2f0051db57f72a0e58/test_coverage)](https://codeclimate.com/github/DevGlitch/botwizer/test_coverage)
 [![GitHub license](https://img.shields.io/github/license/DevGlitch/botwizer)](https://github.com/DevGltich/botwizer/master/LICENSE)
@@ -74,14 +74,14 @@ Follow the below instructions in order to be able to use botwizer on your machin
    https://pjreddie.com/media/files/yolov3.weights
    ```
 
-2. Create .env file with your credentials
+3. Create `.env` file with your credentials
    ```python
    # in .env
    username=________  # Your Insta username
    password=________  # Your Insta password
    ```
 
-3. Add your targets and comments in dashboard.xlsx (Don't forget to save!)
+4. Add your targets and comments in `dashboard.xlsx` (Don't forget to save!)
     <p align="center">
       <a href="https://github.com/DevGlitch/botwizer">
         <img src="images/dashboard.png" alt="Logo" width="600">
@@ -99,13 +99,17 @@ Follow the below instructions in order to be able to use botwizer on your machin
    opts.headless = False # Browser visible when botwizer is running
    ```
 
-
 ### Running
 
-To run botwizer
+To run botwizer:
    ```
    python3 -m final_project
    ```
+
+
+## Disclaimer
+
+This project was developed for educational purposes only as part of a course at Harvard University. **It is not intended for use on Instagram or any other platform.** Using automated tools to interact with websites may violate their terms of service. **The author is not responsible for any misuse of this tool.** The project is no longer maintained, and use at your own risk.
 
 <!-- LICENSE -->
 ## License
